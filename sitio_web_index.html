@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sitio de web - Tabla, Formulario y Multimedia</title>
+  <style>
+    
+    :root{
+      --accent: #2563eb;
+      --muted: #6b7280;
+      --bg: #f8fafc;
+      --card: #ffffffcc; 
+      --radius: 12px;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    body{
+      margin:0;
+      background: url("foto3.jpg") no-repeat center center fixed;
+      background-size: cover;
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+    }
+    .container{
+      max-width:1000px;
+      margin:32px auto;
+      padding:20px;
+      display:grid;
+      gap:20px;
+    }
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    h1{font-size:1.4rem;margin:0}
+    p.lead{margin:0;color:var(--muted)}
+
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:0 6px 18px rgba(15,23,42,0.06);
+      padding:18px;
+    }
+
+    /* Tabla responsiva */
+    .table-wrap{overflow:auto}
+    table{width:100%;border-collapse:collapse}
+    th, td{padding:12px 10px;text-align:left;border-bottom:1px solid #eef2f7}
+    th{background:linear-gradient(transparent, rgba(0,0,0,0.02));font-weight:600}
+
+    /* Formulario */
+    form{display:grid;gap:12px}
+    label{font-size:0.9rem}
+    input[type="text"], input[type="email"], textarea, input[type="file"], select{
+      width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef8;background:#fbfdff
+    }
+    textarea{min-height:100px;resize:vertical}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .actions{display:flex;gap:10px;align-items:center}
+    button{padding:10px 14px;border-radius:8px;border:0;background:var(--accent);color:white;cursor:pointer}
+    button.secondary{background:transparent;color:var(--accent);border:1px solid rgba(37,99,235,0.18)}
+
+    /* Multimedia */
+    .media-link{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--accent);font-weight:600}
+
+    /* Responsive */
+    @media (max-width:680px){
+      .row{grid-template-columns:1fr}
+      header{flex-direction:column;align-items:flex-start;gap:6px}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>Mi Primer Proyecto</h1>
+        <p class="lead">sitio web con tabla, formulario y enlace a archivo multimedia</p>
+      </div>
+      <nav aria-label="Acciones rápidas">
+        <a class="media-link" href="mediavideo-demo.mp4" download>📁 Descargar multimedia</a>
+      </nav>
+    </header>
+
+    <!-- Tabla -->
+    <section class="card" aria-labelledby="tabla-title">
+      <h2 id="tabla-title">Tabla de datos</h2>
+      <p class="lead" style="margin-bottom:10px">datos de personas en planilla</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nombre</th>
+              <th>País</th>
+              <th>Rol</th>
+              <th>Activo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Ana López</td>
+              <td>Perú</td>
+              <td>Diseñadora</td>
+              <td>Sí</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Jorge Martínez</td>
+              <td>Chile</td>
+              <td>Desarrollador</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Lucía R.</td>
+              <td>España</td>
+              <td>Project Manager</td>
+              <td>Sí</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Formulario -->
+    <section class="card" aria-labelledby="form-title">
+      <h2 id="form-title">Formulario de contacto</h2>
+      <form id="contact-form">
+        <div class="row">
+          <div>
+            <label for="name">Nombre</label>
+            <input id="name" name="name" type="text" placeholder="Tu nombre" required />
+          </div>
+          <div>
+            <label for="email">Correo electrónico</label>
+            <input id="email" name="email" type="email" placeholder="tu@ejemplo.com" required />
+          </div>
+        </div>
+
+        <label for="role">Rol</label>
+        <select id="role" name="role">
+          <option>Estudiante</option>
+          <option>Profesional</option>
+          <option selected>Otro</option>
+        </select>
+
+        <label for="message">Mensaje</label>
+        <textarea id="message" name="message" placeholder="Escribe tu mensaje..."></textarea>
+
+        <label for="file">Adjuntar archivo (opcional)</label>
+        <input id="file" name="file" type="file" accept="image/*,application/pdf" />
+
+        <div class="actions">
+          <button type="submit">Enviar</button>
+          <button type="button" class="secondary" id="reset-btn">Limpiar</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Multimedia embebido (si prefieres ver en la página en lugar de sólo enlace) -->
+    <section class="card" aria-labelledby="media-title">
+      <h2 id="media-title">Reproductor multimedia</h2>
+      <p class="lead">video de ejemplo 
+    
+      <video controls style="width:100%;max-height:480px;border-radius:8px;" src="mediavideo-demo.mp4">
+         <code>video</code><a href="mediavideo-demo.mp4">descargar el archivo</a> en su lugar.
+      </video>
+    </section>
+
+    <footer style="text-align:center;color:var(--muted);font-size:0.9rem">
+      Sitio web de prueba.
+    </footer>
+  </div>
+ 
+</body>
+</html>
