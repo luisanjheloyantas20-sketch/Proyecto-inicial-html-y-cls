@@ -1,0 +1,155 @@
+:root{
+      --accent: #2563eb;
+      --muted: #6b7280;
+      --bg: #f8fafc;
+      --card: #ffffffcc; 
+      --radius: 12px;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    body{
+      margin:0;
+      background: url("foto3.jpg") no-repeat center center fixed;
+      background-size: cover;
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+    }
+    .container{
+      max-width:1000px;
+      margin:32px auto;
+      padding:20px;
+      display:grid;
+      gap:20px;
+    }
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14pxpx;
+    }
+    h1{font-size:1.4rem;margin:0}
+    p.lead{margin:0;color:var(--muted)}
+
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:0 6px 18px rgba(15,23,42,0.06);
+      padding:18px;
+    }
+
+    /* Tabla responsiva */
+    .table-wrap{overflow:auto}
+    table{width:100%;border-collapse:collapse}
+    th, td{padding:12px 10px;text-align:left;border-bottom:1px solid #eef2f7}
+    th{background:linear-gradient(transparent, rgba(0,0,0,0.02));font-weight:600}
+
+    /* Formulario */
+    form{display:grid;gap:12px}
+    label{font-size:0.9rem}
+    input[type="text"], input[type="email"], textarea, input[type="file"], select{
+      width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef8;background:#fbfdff
+    }
+    textarea{min-height:100px;resize:vertical}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .actions{display:flex;gap:10px;align-items:center}
+    button{padding:10px 14px;border-radius:8px;border:0;background:var(--accent);color:white;cursor:pointer}
+    button.secondary{background:transparent;color:var(--accent);border:1px solid rgba(37,99,235,0.18)}
+
+    /* Multimedia */
+    .media-link{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--accent);font-weight:600}
+
+    /* Responsive */
+    @media (max-width:680px){
+      .row{grid-template-columns:1fr}
+      header{flex-direction:column;align-items:flex-start;gap:6px}
+    }
+  
+/* Animación de aparición suave */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Animación de resplandor para botones */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37,99,235,0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(37,99,235,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,99,235,0); }
+}
+
+/* Aplicar animación al cargar secciones */
+.card {
+  animation: fadeIn 0.8s ease forwards;
+  opacity: 0;
+}
+
+/* Animación hover en botones */
+button {
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+button:hover {
+  transform: scale(1.05);
+  background: #1d4ed8;
+}
+button:active {
+  transform: scale(0.95);
+}
+
+/* Botón principal con pulso */
+button[type="submit"] {
+  animation: pulse 2s infinite;
+}
+
+/* Enlaces con transición */
+.media-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+.media-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+.media-link:hover::after {
+  width: 100%;
+}
+
+
+/* Transiciones generales para suavizar cambios */
+.card, input, select, textarea, button, .media-link {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Efecto al pasar el mouse sobre las tarjetas */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 22px rgba(15,23,42,0.15);
+}
+
+/* Inputs con transición de borde y sombra */
+input[type="text"], input[type="email"], textarea, select {
+  border: 1px solid #e6eef8;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+  outline: none;
+}
+
+/* Botones con transición suave ya incluida */
+button:hover {
+  background: #1d4ed8;
+  transform: scale(1.05);
+}
+button:active {
+  transform: scale(0.95);
+}
+
+/* Enlaces con transición de color */
+.media-link:hover {
+  color: #1d4ed8;
+}
