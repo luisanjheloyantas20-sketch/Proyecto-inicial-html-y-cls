@@ -1,155 +1,146 @@
-:root{
-      --accent: #2563eb;
-      --muted: #6b7280;
-      --bg: #f8fafc;
-      --card: #ffffffcc; 
-      --radius: 12px;
-      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-    }
-    body{
-      margin:0;
-      background: url("foto3.jpg") no-repeat center center fixed;
-      background-size: cover;
-      color:#0f172a;
-      -webkit-font-smoothing:antialiased;
-    }
-    .container{
-      max-width:1000px;
-      margin:32px auto;
-      padding:20px;
-      display:grid;
-      gap:20px;
-    }
-    header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 14pxpx;
-    }
-    h1{font-size:1.4rem;margin:0}
-    p.lead{margin:0;color:var(--muted)}
+:root {
+  --accent: #2563eb;
+  --muted: #6b7280;
+  --bg: #f8fafc;
+  --card: #ffffffcc;
+  --text: #0f172a;
+  --radius: 12px;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+}
 
-    .card{
-      background:var(--card);
-      border-radius:var(--radius);
-      box-shadow:0 6px 18px rgba(15,23,42,0.06);
-      padding:18px;
-    }
+/* ======== MODO OSCURO ======== */
+body.dark {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --accent: #38bdf8;
+  background: #0f172a;
+  color: var(--text);
+}
 
-    /* Tabla responsiva */
-    .table-wrap{overflow:auto}
-    table{width:100%;border-collapse:collapse}
-    th, td{padding:12px 10px;text-align:left;border-bottom:1px solid #eef2f7}
-    th{background:linear-gradient(transparent, rgba(0,0,0,0.02));font-weight:600}
+/* ======== GENERAL ======== */
+body {
+  margin: 0;
+  background: url("foto3.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: var(--text);
+  transition: background 0.4s ease, color 0.4s ease;
+}
 
-    /* Formulario */
-    form{display:grid;gap:12px}
-    label{font-size:0.9rem}
-    input[type="text"], input[type="email"], textarea, input[type="file"], select{
-      width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef8;background:#fbfdff
-    }
-    textarea{min-height:100px;resize:vertical}
-    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .actions{display:flex;gap:10px;align-items:center}
-    button{padding:10px 14px;border-radius:8px;border:0;background:var(--accent);color:white;cursor:pointer}
-    button.secondary{background:transparent;color:var(--accent);border:1px solid rgba(37,99,235,0.18)}
+.container {
+  display: grid;
+  gap: 20px;
+  max-width: 1000px;
+  margin: 32px auto;
+  padding: 20px;
+  background: var(--bg);
+  border-radius: var(--radius);
+}
 
-    /* Multimedia */
-    .media-link{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--accent);font-weight:600}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
 
-    /* Responsive */
-    @media (max-width:680px){
-      .row{grid-template-columns:1fr}
-      header{flex-direction:column;align-items:flex-start;gap:6px}
-    }
-  
-/* Animación de aparición suave */
-@keyframes fadeIn {
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+  padding: 18px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.15);
+}
+
+/* ======== TABLA ======== */
+.table-wrap { overflow-x: auto; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e5e7eb;
+}
+tbody tr {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeRow 0.5s ease forwards;
+}
+tbody tr:nth-child(1) { animation-delay: 0.2s; }
+tbody tr:nth-child(2) { animation-delay: 0.4s; }
+tbody tr:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes fadeRow {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Animación de resplandor para botones */
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(37,99,235,0.4); }
-  70% { box-shadow: 0 0 0 15px rgba(37,99,235,0); }
-  100% { box-shadow: 0 0 0 0 rgba(37,99,235,0); }
+/* ======== FORMULARIO ======== */
+form {
+  display: grid;
+  gap: 12px;
+}
+.row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.row > div {
+  flex: 1 1 48%;
+  min-width: 200px;
+}
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
 }
 
-/* Aplicar animación al cargar secciones */
-.card {
-  animation: fadeIn 0.8s ease forwards;
-  opacity: 0;
-}
-
-/* Animación hover en botones */
+/* ======== BOTONES ======== */
 button {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 0;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
   transition: transform 0.2s ease, background 0.3s ease;
 }
 button:hover {
   transform: scale(1.05);
   background: #1d4ed8;
 }
-button:active {
-  transform: scale(0.95);
+button.secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid rgba(37,99,235,0.3);
 }
 
-/* Botón principal con pulso */
-button[type="submit"] {
-  animation: pulse 2s infinite;
+/* ======== MENSAJES ======== */
+.status-msg {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-weight: 500;
+  transition: color 0.3s;
 }
+.status-msg.success { color: green; }
+.status-msg.error { color: red; }
 
-/* Enlaces con transición */
-.media-link {
-  position: relative;
-  transition: color 0.3s ease;
-}
-.media-link::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background: var(--accent);
-  transition: width 0.3s ease;
-}
-.media-link:hover::after {
-  width: 100%;
-}
-
-
-/* Transiciones generales para suavizar cambios */
-.card, input, select, textarea, button, .media-link {
-  transition: all 0.3s ease-in-out;
-}
-
-/* Efecto al pasar el mouse sobre las tarjetas */
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 22px rgba(226, 7, 94, 0.15);
-}
-
-/* Inputs con transición de borde y sombra */
-input[type="text"], input[type="email"], textarea, select {
-  border: 1px solid #e6eef8;
-}
-input:focus, textarea:focus, select:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
-  outline: none;
-}
-
-/* Botones con transición suave ya incluida */
-button:hover {
-  background: #09bd45;
-  transform: scale(1.05);
-}
-button:active {
-  transform: scale(0.95);
-}
-
-/* Enlaces con transición de color */
-.media-link:hover {
-  color: #d70d2b;
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
 }
