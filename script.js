@@ -1,4 +1,4 @@
-// ======== FORMULARIO ========
+// FORMULARIO
 const form = document.getElementById("contact-form");
 const msgBox = document.getElementById("form-status");
 
@@ -24,7 +24,7 @@ document.getElementById("reset-btn").addEventListener("click", () => {
   msgBox.className = "status-msg";
 });
 
-// ======== MODO OSCURO ========
+// MODO OSCURO
 const themeBtn = document.getElementById("theme-toggle");
 const body = document.body;
 
@@ -42,7 +42,7 @@ themeBtn.addEventListener("click", () => {
   themeBtn.textContent = isDark ? "☀️ Modo claro" : "🌙 Modo oscuro";
 });
 
-// ======== ANIMACIÓN DE TABLA ========
+// ANIMACIÓN DE TABLA
 const rows = document.querySelectorAll("#tabla-body tr");
 rows.forEach((row, i) => {
   row.style.animationDelay = `${0.2 * (i + 1)}s`;
